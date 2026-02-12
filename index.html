@@ -27,22 +27,109 @@
 </head>
 <body>
 
-<div class="header"><h1>&#x2B21; Full Spectrum Intelligence Analysis</h1><h2>Baltimore Crime Intelligence &mdash; Multi-Year Dataset (2022 &ndash; 2026)</h2><div class="subtitle">289,386 records &middot; Part 1 crimes (2022&ndash;2023) + 911 calls (Jan&ndash;Feb 2026) &middot; 9 Districts &middot; 428 homicides</div></div>
+<div class="header"><h1>&#x2B21; Full Spectrum Intelligence Analysis</h1><h2>Baltimore Crime Intelligence &mdash; Multi-Year Dataset (2022 &ndash; 2026)</h2><div class="subtitle">289,386 records: 90,801 Part 1 crimes (2022&ndash;2023) + 198,585 911 calls (Jan&ndash;Feb 2026) &middot; 9 Districts &middot; 428 homicides &middot; AI active</div></div>
 
-<div class="stats-bar"><div class="stat-item"><div class="stat-num" style="color:var(--red)">428</div><div class="stat-label">Homicide Records</div></div><div class="stat-item"><div class="stat-num" style="color:var(--orange)">9,279</div><div class="stat-label">Assault Calls</div></div><div class="stat-item"><div class="stat-num" style="color:var(--yellow)">6,379</div><div class="stat-label">Robbery Calls</div></div><div class="stat-item"><div class="stat-num" style="color:var(--blue)">795</div><div class="stat-label">Gun-Related</div></div><div class="stat-item"><div class="stat-num" style="color:var(--text)">194,805</div><div class="stat-label">Total 911 Calls</div></div><div class="stat-item"><div class="stat-num" style="color:var(--cyan)">984</div><div class="stat-label">Carjackings</div></div></div>
-
-<!-- S1 -->
-<div class="section-header"><h3>&sect;1 &mdash; District Threat Assessment</h3></div>
-<div class="grid grid-2">
-<div class="card"><div class="card-title"><span class="dot"></span>Violence Concentration by District</div><div id="dist-violence-bars"></div><div class="insight" style="margin-top:16px"><div class="insight-label">AI Detection</div><strong>Northeastern District</strong> leads at 4.4% violent call rate &mdash; nearly <strong>3&times; the Southeastern&rsquo;s</strong> 1.4%. The Western District, despite the <em>fewest total calls</em> (14,435), carries the 2nd-highest violence ratio (3.2%). Fewer calls &ne; safer.</div></div>
-<div class="card"><div class="card-title"><span class="dot"></span>Gun Crime Density by District</div><div id="dist-gun-bars"></div><div class="insight insight-orange" style="margin-top:16px"><div class="insight-label">Firearm Concentration</div><strong>Western</strong> (0.72%) and <strong>Eastern</strong> (0.63%) gun-call rates are <strong>3&times; Northern</strong> (0.24%). Combined: 229 gun incidents &mdash; 28.8% of citywide gun activity from 17.7% of calls.</div></div>
+<div class="stats-bar">
+<div class="stat-item"><div class="stat-num" style="color:var(--red)">428</div><div class="stat-label">Homicides (2022&ndash;23)</div></div>
+<div class="stat-item"><div class="stat-num" style="color:var(--orange)">8,958</div><div class="stat-label">Agg Assault (P1)</div></div>
+<div class="stat-item"><div class="stat-num" style="color:var(--yellow)">6,213</div><div class="stat-label">Robberies (P1)</div></div>
+<div class="stat-item"><div class="stat-num" style="color:var(--blue)">949</div><div class="stat-label">Carjackings (P1)</div></div>
+<div class="stat-item"><div class="stat-num" style="color:var(--text)">90,801</div><div class="stat-label">Part 1 Crimes</div></div>
+<div class="stat-item"><div class="stat-num" style="color:var(--cyan)">194,805</div><div class="stat-label">911 Calls (2026)</div></div>
 </div>
 
-<!-- S2 -->
-<div class="section-header"><h3>&sect;2 &mdash; District Composite Threat Matrix</h3></div>
+<!-- S1: HOMICIDE ANALYSIS -->
+<div class="section-header"><h3>&sect;1 &mdash; Homicide Analysis (Part 1 Crime Data, 2022&ndash;2023)</h3></div>
 <div class="grid grid-2">
-<div class="card"><div class="card-title"><span class="dot"></span>Composite Threat Score</div>
-<table class="data-table"><thead><tr><th>District</th><th>Total</th><th>Violent%</th><th>Gun%</th><th>Shots</th><th>Rob</th><th>Threat</th></tr></thead><tbody>
+<div class="card"><div class="card-title"><span class="dot"></span>428 Homicide Victims: 2022&ndash;2023</div>
+<table class="data-table"><thead><tr><th colspan="2">Metric</th><th>Value</th></tr></thead><tbody>
+<tr><td colspan="2">2022 Homicides</td><td style="color:var(--red)"><strong>236</strong></td></tr>
+<tr><td colspan="2">2023 Homicides</td><td style="color:var(--orange)"><strong>192</strong></td></tr>
+<tr><td colspan="2">Firearm Homicides</td><td><strong>376</strong> (87.9%)</td></tr>
+<tr><td colspan="2">Male Victims</td><td><strong>379</strong> (88.6%)</td></tr>
+<tr><td colspan="2">Female Victims</td><td><strong>46</strong> (10.7%)</td></tr>
+<tr><td colspan="2">Peak Month</td><td style="color:var(--red)"><strong>June</strong> (61 homicides)</td></tr>
+<tr><td colspan="2">Lowest Month</td><td style="color:var(--green)"><strong>September</strong> (23)</td></tr>
+</tbody></table>
+<div class="insight" style="margin-top:14px"><div class="insight-label">Lethality Profile</div>Baltimore averaged <strong>214 homicides/year</strong> in this dataset (236 in 2022, 192 in 2023). <strong>87.9% are firearm deaths</strong> &mdash; overwhelmingly male victims (88.6%). June is the deadliest month with 61 homicides, nearly 3&times; September&rsquo;s 23.</div>
+</div>
+<div class="card"><div class="card-title"><span class="dot"></span>Monthly Homicide Pattern (2022&ndash;2023 Combined)</div>
+<div id="hom-monthly-chart" style="position:relative;height:180px;padding:10px 0 30px;"></div>
+<div class="insight insight-orange" style="margin-top:14px"><div class="insight-label">Summer Lethality Surge</div>June (61) and July (46) account for <strong>25% of all homicides</strong> in just 2 months. The summer spike (May&ndash;Aug: 169 homicides) dwarfs the winter baseline (Nov&ndash;Feb: 120). Classic seasonal violence amplification.</div>
+</div>
+</div>
+
+<!-- S2: HOMICIDE GEOGRAPHY -->
+<div class="section-header"><h3>&sect;2 &mdash; Lethal Geography &mdash; Homicide Hotspots</h3></div>
+<div class="grid grid-2">
+<div class="card"><div class="card-title"><span class="dot"></span>Highest-Homicide Neighborhoods (2022&ndash;2023)</div>
+<table class="data-table"><thead><tr><th>Neighborhood</th><th>Hom</th><th>Serious Violent</th><th>Total P1</th><th>V.Ratio</th></tr></thead><tbody>
+<tr><td style="color:var(--red)">Upton</td><td><strong>11</strong></td><td>124</td><td>524</td><td style="color:var(--red)">23.7%</td></tr>
+<tr><td style="color:var(--red)">Brooklyn</td><td><strong>8</strong></td><td>199</td><td>1,118</td><td>17.8%</td></tr>
+<tr><td style="color:var(--orange)">Coldstream HM</td><td><strong>6</strong></td><td>91</td><td>544</td><td>16.7%</td></tr>
+<tr><td style="color:var(--orange)">Penrose/Fayette</td><td><strong>6</strong></td><td>88</td><td>358</td><td style="color:var(--red)">24.6%</td></tr>
+<tr><td>Broadway East</td><td><strong>6</strong></td><td>67</td><td>321</td><td>20.9%</td></tr>
+<tr><td>Sandtown-Winchester</td><td><strong>5</strong></td><td>150</td><td>620</td><td style="color:var(--red)">24.2%</td></tr>
+<tr><td>Belair-Edison</td><td><strong>4</strong></td><td>176</td><td>1,218</td><td>14.4%</td></tr>
+<tr><td>Downtown</td><td><strong>4</strong></td><td>306</td><td>1,563</td><td>19.6%</td></tr>
+<tr><td>Cherry Hill</td><td><strong>4</strong></td><td>118</td><td>787</td><td>15.0%</td></tr>
+<tr><td>Morrell Park</td><td><strong>4</strong></td><td>73</td><td>534</td><td>13.7%</td></tr>
+</tbody></table>
+<div class="insight" style="margin-top:14px"><div class="insight-label">Concentrated Lethality</div><strong>Upton</strong> leads with 11 homicides and 23.7% serious violent crime ratio. <strong>Sandtown-Winchester</strong> and <strong>Penrose/Fayette</strong> both exceed 24% &mdash; nearly 1 in 4 reported crimes is a serious violent offense.</div>
+</div>
+<div class="card"><div class="card-title"><span class="dot"></span>Repeat Homicide Locations</div>
+<table class="data-table" style="font-size:11px;"><thead><tr><th>Address</th><th>Homicides</th><th>Neighborhood</th></tr></thead><tbody>
+<tr><td style="color:var(--red)">1700 Pennsylvania Ave</td><td><strong>4</strong></td><td>Upton</td></tr>
+<tr><td style="color:var(--orange)">5400 Park Heights Ave</td><td><strong>3</strong></td><td>Park Heights</td></tr>
+<tr><td style="color:var(--orange)">800 Gretna Ct</td><td><strong>3</strong></td><td>Brooklyn</td></tr>
+<tr><td>2800 Edmondson Ave</td><td><strong>3</strong></td><td>Rosemont</td></tr>
+<tr><td>3200 Woodring Ave</td><td><strong>3</strong></td><td>Belair-Edison</td></tr>
+<tr><td>3400 Spelman Rd</td><td><strong>3</strong></td><td>Frankford</td></tr>
+<tr><td>3600 5th St</td><td><strong>3</strong></td><td>Brooklyn</td></tr>
+<tr><td>4700 Gwynn Oak Ave</td><td><strong>3</strong></td><td>Howard Park</td></tr>
+</tbody></table>
+<div class="insight insight-blue" style="margin-top:14px"><div class="insight-label">Weapon Profile</div><strong>87.9% firearm</strong> (376/428): 215 generic &ldquo;firearm,&rdquo; 139 handgun, 8 automatic handgun, 4 other firearm, 3 automatic firearm. Only 25 knife/cutting instrument and 6 personal weapons. Baltimore&rsquo;s homicide problem is overwhelmingly a <span style="color:var(--blue)">gun problem</span>.</div>
+</div>
+</div>
+
+<!-- S3: PART 1 CRIME OVERVIEW -->
+<div class="section-header"><h3>&sect;3 &mdash; Part 1 Crime Overview (2022&ndash;2023)</h3></div>
+<div class="grid grid-2">
+<div class="card"><div class="card-title"><span class="dot"></span>Crime Volume by Type</div>
+<div id="nbr-bars"></div>
+<div class="insight" style="margin-top:14px"><div class="insight-label">Neighborhood Violence Ratio</div><strong>Penrose/Fayette</strong> (24.6%), <strong>Charles North</strong> (25.1%), and <strong>Sandtown-Winchester</strong> (24.2%) each have nearly <strong>1 in 4</strong> reported crimes classified as serious violent. These are structural violence zones, not random crime areas.</div>
+</div>
+<div class="card"><div class="card-title"><span class="dot"></span>Part 1 Crime Breakdown</div>
+<table class="data-table"><thead><tr><th>Category</th><th>2022&ndash;2023</th><th>Annual Avg</th></tr></thead><tbody>
+<tr><td>Common Assault</td><td style="color:var(--orange)">14,400</td><td>~7,200</td></tr>
+<tr><td>Vandalism</td><td>13,569</td><td>~6,785</td></tr>
+<tr><td>Auto Theft</td><td style="color:var(--red)">11,142</td><td>~5,571</td></tr>
+<tr><td>Agg. Assault</td><td style="color:var(--red)">8,958</td><td>~4,479</td></tr>
+<tr><td>Larceny</td><td>8,042</td><td>~4,021</td></tr>
+<tr><td>Larceny from Auto</td><td>6,238</td><td>~3,119</td></tr>
+<tr><td>Burglary</td><td>5,505</td><td>~2,753</td></tr>
+<tr><td>Fraud</td><td>5,286</td><td>~2,643</td></tr>
+<tr><td>Robbery (all)</td><td style="color:var(--orange)">6,213</td><td>~3,107</td></tr>
+<tr><td>&nbsp;&nbsp;&mdash; Carjacking</td><td style="color:var(--red)">949</td><td>~475</td></tr>
+<tr><td>Shoplifting</td><td>3,658</td><td>~1,829</td></tr>
+<tr><td>Homicide</td><td style="color:var(--red)">428</td><td>~214</td></tr>
+<tr><td>Rape</td><td>494</td><td>~247</td></tr>
+</tbody></table>
+</div>
+</div>
+
+<!-- S4: 911 DISTRICT THREAT -->
+<div class="section-header"><h3>&sect;4 &mdash; 911 Call Analysis &mdash; District Threat (Jan&ndash;Feb 2026)</h3></div>
+<div class="grid grid-2">
+<div class="card"><div class="card-title"><span class="dot"></span>Violence Concentration by District</div><div id="dist-violence-bars"></div><div class="insight" style="margin-top:16px"><div class="insight-label">AI Detection</div><strong>Northeastern</strong> leads at 4.4% &mdash; nearly 3&times; Southeastern (1.4%). Western has the <em>fewest calls</em> (14,435) but 2nd-highest violence ratio (3.2%).</div></div>
+<div class="card"><div class="card-title"><span class="dot"></span>Gun Crime Density + ShotSpotter</div><div id="dist-gun-bars"></div><div style="margin-top:12px"><div id="shotspot-bars"></div></div><div class="insight insight-orange" style="margin-top:12px"><div class="insight-label">Firearm Corridor</div><strong>Western</strong> (0.72%) and <strong>Eastern</strong> (0.63%) gun-call rates 3&times; Northern (0.24%). Eastern + Western average <strong>1.5 gunfire events/day each</strong>.</div></div>
+</div>
+
+<!-- S5: DISTRICT MATRIX -->
+<div class="section-header"><h3>&sect;5 &mdash; District Composite Threat Matrix</h3></div>
+<div class="grid" style="grid-template-columns:1fr;">
+<div class="card"><div class="card-title"><span class="dot"></span>911 Call Composite Threat Score (Jan&ndash;Feb 2026)</div>
+<table class="data-table"><thead><tr><th>District</th><th>Total</th><th>Violent%</th><th>Gun%</th><th>Shootings</th><th>Robberies</th><th>Threat</th></tr></thead><tbody>
 <tr><td>Northeastern</td><td>20,061</td><td style="color:var(--red)">4.4%</td><td>0.53%</td><td>7</td><td>15</td><td><span class="tag tag-critical">CRITICAL</span></td></tr>
 <tr><td>Western</td><td>14,435</td><td style="color:var(--red)">3.2%</td><td style="color:var(--red)">0.72%</td><td>6</td><td>20</td><td><span class="tag tag-critical">CRITICAL</span></td></tr>
 <tr><td>Eastern</td><td>19,958</td><td>2.5%</td><td style="color:var(--red)">0.63%</td><td>12</td><td>26</td><td><span class="tag tag-critical">CRITICAL</span></td></tr>
@@ -52,83 +139,70 @@
 <tr><td>Central</td><td>22,751</td><td>2.4%</td><td>0.30%</td><td>8</td><td>27</td><td><span class="tag tag-moderate">MODERATE</span></td></tr>
 <tr><td>Northern</td><td>20,030</td><td>2.0%</td><td>0.24%</td><td>6</td><td>12</td><td><span class="tag tag-low">LOW</span></td></tr>
 <tr><td>Southeastern</td><td>29,973</td><td style="color:var(--green)">1.4%</td><td style="color:var(--green)">0.27%</td><td>6</td><td>29</td><td><span class="tag tag-low">LOW</span></td></tr>
-</tbody></table>
-<div class="insight insight-blue" style="margin-top:14px"><div class="insight-label">Southeastern Paradox</div>Most total calls (29,973) but lowest violent rate (1.4%). Yet <strong>2nd in robberies</strong> (29). Property crime territory.</div></div>
-<div class="card"><div class="card-title"><span class="dot"></span>ShotSpotter + Firearm Discharge</div><div id="shotspot-bars"></div><div class="insight" style="margin-top:16px"><div class="insight-label">Acoustic Gunfire</div><strong>Western</strong> + <strong>Eastern</strong> average 1.5 gunfire events/day each over 34 days. Western leads ShotSpotter (36) despite fewest total calls.</div></div>
+</tbody></table></div>
 </div>
 
-<!-- S3 -->
-<div class="section-header"><h3>&sect;3 &mdash; Temporal Safety Analysis</h3></div>
+<!-- S6: TEMPORAL -->
+<div class="section-header"><h3>&sect;6 &mdash; Temporal Safety Analysis (911 Calls, 2026)</h3></div>
 <div class="grid grid-2">
 <div class="card"><div class="card-title"><span class="dot"></span>24-Hour Call Distribution</div>
 <div style="display:flex;gap:20px"><div style="flex:1"><div style="font-size:11px;color:var(--text-dim);margin-bottom:8px;font-family:'JetBrains Mono',monospace;">ALL 911 CALLS</div><div id="hourly-all" class="mini-bars"></div><div style="display:flex;justify-content:space-between;margin-top:4px"><span class="heat-label">12AM</span><span class="heat-label">6AM</span><span class="heat-label">12PM</span><span class="heat-label">6PM</span><span class="heat-label">11PM</span></div></div>
 <div style="flex:1"><div style="font-size:11px;color:var(--text-dim);margin-bottom:8px;font-family:'JetBrains Mono',monospace;">VIOLENT CALLS</div><div id="hourly-violent" class="mini-bars"></div><div style="display:flex;justify-content:space-between;margin-top:4px"><span class="heat-label">12AM</span><span class="heat-label">6AM</span><span class="heat-label">12PM</span><span class="heat-label">6PM</span><span class="heat-label">11PM</span></div></div></div>
 <div style="margin-top:16px;display:flex;gap:20px"><div style="flex:1"><div style="font-size:11px;color:var(--text-dim);margin-bottom:8px;font-family:'JetBrains Mono',monospace;">GUN-RELATED</div><div id="hourly-gun" class="mini-bars"></div><div style="display:flex;justify-content:space-between;margin-top:4px"><span class="heat-label">12AM</span><span class="heat-label">6AM</span><span class="heat-label">12PM</span><span class="heat-label">6PM</span><span class="heat-label">11PM</span></div></div>
 <div style="flex:1"><div style="font-size:11px;color:var(--text-dim);margin-bottom:8px;font-family:'JetBrains Mono',monospace;">CONFIRMED SHOOTINGS</div><div id="hourly-shooting" class="mini-bars"></div><div style="display:flex;justify-content:space-between;margin-top:4px"><span class="heat-label">12AM</span><span class="heat-label">6AM</span><span class="heat-label">12PM</span><span class="heat-label">6PM</span><span class="heat-label">11PM</span></div></div></div>
-<div class="insight" style="margin-top:16px"><div class="insight-label">Bimodal Violence</div><strong>Two daily peaks</strong>: afternoon at <strong>2&ndash;4 PM</strong> (297&ndash;309 calls) and midnight (218). Gun crime peaks at <strong>midnight</strong> (83) and <strong>9 PM</strong> (56). Safest: <strong>4&ndash;7 AM</strong> &mdash; 75% below peak.</div></div>
-<div class="card"><div class="card-title"><span class="dot"></span>Violence Heatmap: Hour &times; Day</div><div style="font-size:10px;color:var(--text-dim);margin-bottom:10px;font-family:'JetBrains Mono',monospace;">VIOLENT 911 CALLS &mdash; BRIGHTER = MORE DANGEROUS</div><div id="heatmap-container"></div><div class="insight insight-orange" style="margin-top:16px"><div class="insight-label">Thursday Anomaly</div><strong>Thursday</strong> is the most violent day (801 calls) &mdash; <strong>35% higher</strong> than Tuesday (607). Thursday midnight: highest single hour-day cell. Defies weekend-violence patterns.</div></div>
+<div class="insight" style="margin-top:16px"><div class="insight-label">Bimodal Violence</div><strong>Two daily peaks</strong>: 2&ndash;4 PM (297&ndash;309 calls) and midnight (220). Gun crime peaks at <strong>midnight</strong> (83) and <strong>9 PM</strong> (56). Safest: 4&ndash;7 AM.</div></div>
+<div class="card"><div class="card-title"><span class="dot"></span>Violence Heatmap: Hour &times; Day</div><div style="font-size:10px;color:var(--text-dim);margin-bottom:10px;font-family:'JetBrains Mono',monospace;">VIOLENT 911 CALLS &mdash; BRIGHTER = MORE DANGEROUS</div><div id="heatmap-container"></div><div class="insight insight-orange" style="margin-top:16px"><div class="insight-label">Thursday Anomaly</div><strong>Thursday</strong>: 804 violent calls &mdash; 35% higher than Tuesday (612). Thursday midnight is the most violent single hour-slot.</div></div>
 </div>
 
-<!-- S4 -->
-<div class="section-header"><h3>&sect;4 &mdash; Lethal Geography &mdash; Neighborhood Hotspots</h3></div>
-<div class="grid grid-2">
-<div class="card"><div class="card-title"><span class="dot"></span>Most Dangerous Neighborhoods (min 300 calls)</div><div id="nbr-bars"></div><div class="insight" style="margin-top:14px"><div class="insight-label">Violence Concentration</div><strong>Oldtown</strong>: 8.1% violent call rate &mdash; nearly 1 in 12 calls involves violence. <strong>Frankford</strong> has 176 violent calls &mdash; highest absolute count citywide.</div></div>
-<div class="card"><div class="card-title"><span class="dot"></span>Repeat-Violence Locations</div>
-<table class="data-table" style="font-size:11px;"><thead><tr><th>Location</th><th>Calls</th><th>Neighborhood</th><th>District</th></tr></thead><tbody>
-<tr><td style="color:var(--red)">100 W 29th St</td><td><strong>12</strong></td><td>Charles Village</td><td>Northern</td></tr>
-<tr><td style="color:var(--orange)">2300 Koko Ln</td><td><strong>6</strong></td><td>Panway/Braddish</td><td>Western</td></tr>
-<tr><td style="color:var(--orange)">3300 E Fayette St</td><td><strong>6</strong></td><td>Patterson Park</td><td>Southeastern</td></tr>
-<tr><td>3000 S Hanover St</td><td><strong>5</strong></td><td>Middle Branch</td><td>Southern</td></tr>
-<tr><td>6000 Amberwood Rd</td><td><strong>5</strong></td><td>Frankford</td><td>Northeastern</td></tr>
-<tr><td>2600 Edmondson Ave</td><td><strong>4</strong></td><td>Rosemont</td><td>Western</td></tr>
-<tr><td>1300 E Lanvale St</td><td><strong>4</strong></td><td>Oliver</td><td>Eastern</td></tr>
-<tr><td>4700 Park Heights Ave</td><td><strong>4</strong></td><td>Central Pk Hts</td><td>Northwestern</td></tr>
-<tr><td>4600 Parkwood Ave</td><td><strong>4</strong></td><td>Frankford</td><td>Northeastern</td></tr>
-<tr><td>3900 Fairhaven Ave</td><td><strong>4</strong></td><td>Curtis Bay</td><td>Southern</td></tr>
-</tbody></table>
-<div class="insight insight-blue" style="margin-top:14px"><div class="insight-label">Multi-District Spread</div>Unlike DC&rsquo;s concentrated SE corridor, Baltimore&rsquo;s violence hotspots distribute across <strong>all 9 districts</strong>. No single corridor dominates.</div></div>
-</div>
-
-<!-- S5 -->
-<div class="section-header"><h3>&sect;5 &mdash; Gun Crime Temporal &times; Spatial Matrix</h3></div>
+<!-- S7: GUN MATRIX -->
+<div class="section-header"><h3>&sect;7 &mdash; Gun Crime Matrix (911, 2026)</h3></div>
 <div class="grid" style="grid-template-columns:1fr;">
 <div class="card"><div class="card-title"><span class="dot"></span>Gun Calls by District &times; 4-Hour Block</div><div id="gun-heatmap-district"></div>
-<div style="display:grid;grid-template-columns:1fr;gap:10px;margin-top:16px;">
-<div class="insight"><div class="insight-label">Eastern/Western Midnight Axis</div>Eastern and Western each record <strong>40 gun calls</strong> midnight&ndash;4 AM &mdash; more than Northern records <em>all day</em> (48). A <strong>midnight gun corridor</strong> through central Baltimore.</div>
-<div class="insight insight-orange"><div class="insight-label">Southwestern Evening Flip</div>Near-zero gun activity 4AM&ndash;12PM (3 calls) but surges to <strong>40 calls</strong> 4PM&ndash;midnight. Safe by day, armed by night.</div></div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;">
+<div class="insight"><div class="insight-label">Eastern/Western Midnight Axis</div>Both record <strong>40 gun calls</strong> midnight&ndash;4 AM &mdash; more than Northern all day (48).</div>
+<div class="insight insight-orange"><div class="insight-label">Southwestern Evening Flip</div>Near-zero guns 4AM&ndash;noon (3 calls), surges to <strong>40 calls</strong> 4PM&ndash;midnight.</div></div></div>
 </div>
 
-<!-- S6 -->
-<div class="section-header"><h3>&sect;6 &mdash; AI Non-Human Intelligence Findings</h3></div>
+<!-- S8: AI FINDINGS -->
+<div class="section-header"><h3>&sect;8 &mdash; AI Non-Human Intelligence Findings</h3></div>
 <div class="grid grid-2">
-<div class="card" style="border-color:var(--red)"><div class="card-title" style="color:var(--red);font-size:12px"><span class="dot"></span>Finding 1: The Thursday Effect</div><p style="font-size:13px;line-height:1.7">Thursday: <strong>801 violent calls</strong> &mdash; 35% more than Tuesday (607), 8% higher than Saturday (741). Thursday midnight is the single most violent hour-slot.</p><p style="font-size:13px;line-height:1.7;margin-top:10px"><strong>Implication:</strong> Violence doesn&rsquo;t follow nightlife patterns. The Thursday spike suggests <span style="color:var(--red)">mid-week conflict escalation</span> &mdash; economic stress or drug market rhythms.</p></div>
-<div class="card" style="border-color:var(--orange)"><div class="card-title" style="color:var(--orange);font-size:12px"><span class="dot"></span>Finding 2: Volume-Lethality Inversion</div><p style="font-size:13px;line-height:1.7"><strong>Western</strong>: fewest calls (14,435) but highest gun rate (0.72%). <strong>Southeastern</strong>: most calls (29,973) but lowest violence (1.4%). Correlation: <span style="color:var(--orange)">r &asymp; &minus;0.65</span>.</p><p style="font-size:13px;line-height:1.7;margin-top:10px"><strong>Implication:</strong> Low-call districts &ne; safe. Concentrated interpersonal violence, same pattern as DC&rsquo;s District 7.</p></div>
-<div class="card" style="border-color:var(--purple)"><div class="card-title" style="color:var(--purple);font-size:12px"><span class="dot"></span>Finding 3: Bimodal Violence Clock</div><p style="font-size:13px;line-height:1.7">Two peaks: <strong>2&ndash;4 PM</strong> and <strong>midnight</strong>. Most cities show single late-night peaks. Afternoon accounts for <span style="color:var(--purple)">12.3%</span> of daily violence in 2 hours (8.3% expected).</p><p style="font-size:13px;line-height:1.7;margin-top:10px"><strong>Implication:</strong> Daylight violence at this scale = <em>structural</em> not <em>opportunistic</em>. Night-focused policing misses it.</p></div>
-<div class="card" style="border-color:var(--cyan)"><div class="card-title" style="color:var(--cyan);font-size:12px"><span class="dot"></span>Finding 4: The 5,841 Call Load</div><p style="font-size:13px;line-height:1.7"><strong>5,841 calls/day</strong> across 9 districts. Only 1.7% high-priority. Violent: <span style="color:var(--cyan)">146/day</span> citywide.</p><p style="font-size:13px;line-height:1.7;margin-top:10px"><strong>Implication:</strong> 78.9% non-emergency calls = massive resource dilution. 76K business checks compete with 795 gun events.</p></div>
-<div class="card full-width" style="border-color:var(--red)"><div class="card-title" style="color:var(--red);font-size:12px"><span class="dot"></span>Finding 5: Eastern vs Central &mdash; Twin Ecosystems</div><p style="font-size:13px;line-height:1.7">Eastern: most guns (126), most shootings (12), few robberies (26). Central: most robberies (27), fewer guns (69).</p>
-<div style="display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px">
-<div style="background:var(--surface2);padding:14px;border-radius:6px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--red);margin-bottom:6px">EASTERN &mdash; ARMED TERRITORIAL</div><div style="font-size:12px;line-height:1.6">Gun-dominant, shooting-heavy. Violence is expressive &mdash; turf disputes. Midnight&ndash;4AM peak (40 gun calls).</div></div>
-<div style="background:var(--surface2);padding:14px;border-radius:6px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--orange);margin-bottom:6px">CENTRAL &mdash; PREDATORY EXTRACTION</div><div style="font-size:12px;line-height:1.6">Robbery-dominant, lower gun rate. Violence is instrumental &mdash; victims of opportunity in downtown commercial zone.</div></div></div></div>
+<div class="card" style="border-color:var(--red)"><div class="card-title" style="color:var(--red);font-size:12px"><span class="dot"></span>Finding 1: 88% Firearm Homicide Rate</div><p style="font-size:13px;line-height:1.7">376 of 428 homicides (87.9%) involved firearms. Combined with 949 carjackings and 5,264 robberies, Baltimore&rsquo;s violent crime ecosystem is <span style="color:var(--red)">overwhelmingly firearms-driven</span>. The handgun alone accounts for 139 deaths.</p></div>
+<div class="card" style="border-color:var(--orange)"><div class="card-title" style="color:var(--orange);font-size:12px"><span class="dot"></span>Finding 2: The June Killing Season</div><p style="font-size:13px;line-height:1.7">June generates <strong>61 homicides</strong> &mdash; 2.6&times; September&rsquo;s 23. Summer (May&ndash;Aug) accounts for 39.5% of annual homicides. This <span style="color:var(--orange)">seasonal amplification</span> is stronger than most US cities.</p></div>
+<div class="card" style="border-color:var(--purple)"><div class="card-title" style="color:var(--purple);font-size:12px"><span class="dot"></span>Finding 3: Volume-Lethality Inversion</div><p style="font-size:13px;line-height:1.7"><strong>Western</strong>: fewest 911 calls but highest gun rate (0.72%). <strong>Southeastern</strong>: most calls but lowest violence (1.4%). Correlation: <span style="color:var(--purple)">r &asymp; &minus;0.65</span>. Low-call districts = concentrated lethal violence.</p></div>
+<div class="card" style="border-color:var(--cyan)"><div class="card-title" style="color:var(--cyan);font-size:12px"><span class="dot"></span>Finding 4: Thursday Anomaly</div><p style="font-size:13px;line-height:1.7">Thursday: <strong>804 violent calls</strong> &mdash; 35% more than Tuesday. Most violent single cell: Thursday midnight (43 calls). Baltimore&rsquo;s violence <span style="color:var(--cyan)">defies the weekend pattern</span>.</p></div>
+<div class="card full-width" style="border-color:var(--red)"><div class="card-title" style="color:var(--red);font-size:12px"><span class="dot"></span>Finding 5: Structural Violence Zones</div><p style="font-size:13px;line-height:1.7">Neighborhoods with &gt;20% serious violent crime ratios: <strong>Penrose/Fayette</strong> (24.6%), <strong>Sandtown-Winchester</strong> (24.2%), <strong>Upton</strong> (23.7%), <strong>Mondawmin</strong> (22.5%). These aren&rsquo;t crime hotspots &mdash; they&rsquo;re <span style="color:var(--red)">structurally violent territories</span> where 1 in 4 reported crimes involves serious violence.</p></div>
 </div>
 
-<!-- S7 -->
-<div class="section-header"><h3>&sect;7 &mdash; Operational Safety Protocol</h3></div>
+<!-- S9: SAFETY -->
+<div class="section-header"><h3>&sect;9 &mdash; Operational Safety Protocol</h3></div>
 <div class="grid grid-3">
-<div class="card" style="border-top:3px solid var(--green)"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--green);margin-bottom:12px">&diams; SAFEST CONDITIONS</div><ul style="list-style:none;font-size:13px;line-height:2"><li>&check; Northern &amp; Southeastern Districts</li><li>&check; 4 AM &ndash; 8 AM (75% below peak)</li><li>&check; Inner Harbor / Federal Hill daytime</li><li>&check; Tuesday &amp; Wednesday</li><li>&check; Non-emergency zones (78.9%)</li></ul></div>
-<div class="card" style="border-top:3px solid var(--orange)"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--orange);margin-bottom:12px">&blacktriangle; ELEVATED RISK</div><ul style="list-style:none;font-size:13px;line-height:2"><li>&warning; Central &amp; Southern after dark</li><li>&warning; Northwestern evenings</li><li>&warning; 2 PM &ndash; 4 PM citywide</li><li>&warning; Thursday all day</li><li>&warning; Park Heights Ave corridor</li></ul></div>
-<div class="card" style="border-top:3px solid var(--red)"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--red);margin-bottom:12px">&FilledSmallSquare; CRITICAL DANGER</div><ul style="list-style:none;font-size:13px;line-height:2"><li>&cross; Western &amp; Eastern (0.63&ndash;0.72% gun)</li><li>&cross; Northeastern (4.4% violent)</li><li>&cross; Midnight &ndash; 4 AM Eastern/Western</li><li>&cross; Oldtown / Frankford / Sandtown</li><li>&cross; Thursday midnight peak</li></ul></div>
+<div class="card" style="border-top:3px solid var(--green)"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--green);margin-bottom:12px">&diams; SAFEST CONDITIONS</div><ul style="list-style:none;font-size:13px;line-height:2"><li>&check; Northern &amp; Southeastern Districts</li><li>&check; 4 AM &ndash; 8 AM (75% below peak)</li><li>&check; Inner Harbor / Federal Hill daytime</li><li>&check; Tuesday &amp; Wednesday</li></ul></div>
+<div class="card" style="border-top:3px solid var(--orange)"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--orange);margin-bottom:12px">&blacktriangle; ELEVATED RISK</div><ul style="list-style:none;font-size:13px;line-height:2"><li>&warning; Central &amp; Southern after dark</li><li>&warning; 2&ndash;4 PM citywide (afternoon peak)</li><li>&warning; Thursday all day</li><li>&warning; Park Heights Ave corridor</li></ul></div>
+<div class="card" style="border-top:3px solid var(--red)"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--red);margin-bottom:12px">&FilledSmallSquare; CRITICAL DANGER</div><ul style="list-style:none;font-size:13px;line-height:2"><li>&cross; Western &amp; Eastern Districts</li><li>&cross; Upton / Sandtown / Penrose</li><li>&cross; Midnight &ndash; 4 AM Eastern/Western</li><li>&cross; Summer months (June peak)</li></ul></div>
 </div>
 
-<!-- S8 -->
-<div class="section-header"><h3>&sect;8 &mdash; Weekly Trends</h3></div>
-<div class="grid" style="grid-template-columns:1fr;">
-<div class="card"><div class="card-title"><span class="dot"></span>Weekly Call Volume &amp; Violence (5 Weeks)</div><div id="weekly-chart" style="position:relative;height:200px;padding:10px 0 30px;"></div><div class="insight" style="margin-top:8px"><div class="insight-label">Operational Tempo</div>Week 2: highest violence (1,071) then stabilized ~1,030/week. Annualizing: <strong>~52,850 violent calls</strong> and <strong>~741 shootings</strong> projected for 2026.</div></div>
-</div>
-
-<div class="footer">AI Full Spectrum Analysis &middot; 289,386 records &middot; Baltimore PD Data 2022&ndash;2026<br>Generated by non-human intelligence pattern recognition</div>
+<div class="footer">AI Full Spectrum Analysis &middot; 289,386 records &middot; Baltimore PD 2022&ndash;2026<br>Part 1 crimes (2022&ndash;2023) + 911 calls (Jan&ndash;Feb 2026) &middot; Non-human intelligence pattern recognition</div>
 
 <button id="back-to-top">&uarr;</button>
 <script>
+// Part 1 Crime Data (2022-2023)
+const p1Homicides = 428;
+const p1Hom2022 = 236;
+const p1Hom2023 = 192;
+const p1AggAssault = 8958;
+const p1CommonAssault = 14400;
+const p1Robbery = 5264;
+const p1Carjacking = 949;
+const p1AutoTheft = 11142;
+const p1Burglary = 5505;
+const p1Rape = 494;
+const p1FirearmHom = 376;
+const p1Total = 90801;
+
+const homMonthly = [53,35,40,32,28,61,46,34,23,26,24,26];
+
+// 911 Call Data (Jan-Feb 2026)
+const c911Total = 194805;
 
 const distViolence = [
   {label:'Northeastern', pct:4.4, color:'var(--red)'},
@@ -139,7 +213,7 @@ const distViolence = [
   {label:'Central', pct:2.4, color:'var(--yellow)'},
   {label:'Southern', pct:2.3, color:'var(--yellow)'},
   {label:'Northern', pct:2.0, color:'var(--green)'},
-  {label:'Southeastern', pct:1.4, color:'var(--green)'},
+  {label:'Southeastern', pct:1.4, color:'var(--green)'}
 ];
 const distGun = [
   {label:'Western', pct:0.72, color:'var(--red)'},
@@ -150,7 +224,7 @@ const distGun = [
   {label:'Central', pct:0.30, color:'var(--yellow)'},
   {label:'Southwestern', pct:0.29, color:'var(--yellow)'},
   {label:'Southeastern', pct:0.27, color:'var(--green)'},
-  {label:'Northern', pct:0.24, color:'var(--green)'},
+  {label:'Northern', pct:0.24, color:'var(--green)'}
 ];
 const shotspotData = [
   {label:'Eastern', pct:52, color:'var(--red)'},
@@ -161,32 +235,35 @@ const shotspotData = [
   {label:'Southwestern', pct:23, color:'var(--yellow)'},
   {label:'Southeastern', pct:15, color:'var(--green)'},
   {label:'Central', pct:14, color:'var(--green)'},
-  {label:'Northern', pct:13, color:'var(--green)'},
+  {label:'Northern', pct:13, color:'var(--green)'}
 ];
+
+// Part 1 Neighborhoods by serious violent crime ratio (min 300 Part 1 records)
 const nbrData = [
-  {label:'Oldtown', pct:8.1, color:'var(--red)'},
-  {label:'Edgewood', pct:7.7, color:'var(--red)'},
-  {label:'Allendale', pct:6.8, color:'var(--red)'},
-  {label:'Coldstream HM', pct:6.5, color:'var(--orange)'},
-  {label:'Greenspring', pct:6.5, color:'var(--orange)'},
-  {label:'Parkview/Woodbrk', pct:6.5, color:'var(--orange)'},
-  {label:'Oliver', pct:6.2, color:'var(--orange)'},
-  {label:'Waltherson', pct:6.1, color:'var(--yellow)'},
-  {label:'Edmondson Vlg', pct:6.0, color:'var(--yellow)'},
-  {label:'Frankford', pct:5.5, color:'var(--yellow)'},
+  {label:'Penrose/Fayette', pct:24.6, color:'var(--red)'},
+  {label:'Charles North', pct:25.1, color:'var(--red)'},
+  {label:'Sandtown-Winch', pct:24.2, color:'var(--red)'},
+  {label:'Upton', pct:23.7, color:'var(--red)'},
+  {label:'Mondawmin', pct:22.5, color:'var(--orange)'},
+  {label:'Brooklyn', pct:17.8, color:'var(--orange)'},
+  {label:'Coldstream HM', pct:16.7, color:'var(--orange)'},
+  {label:'Fells Point', pct:15.3, color:'var(--yellow)'},
+  {label:'Cherry Hill', pct:15.0, color:'var(--yellow)'},
+  {label:'Belair-Edison', pct:14.4, color:'var(--yellow)'}
 ];
-const hourlyAll = [11115,10434,8372,6928,5754,4996,3298,3569,7271,8527,9355,9795,9598,8874,6854,6569,9556,10545,10605,11389,11393,10118,6614,7056];
-const hourlyViolent = [218,184,166,122,99,73,78,107,153,166,196,226,233,241,297,309,288,280,256,286,267,240,233,205];
-const hourlyGun = [83,46,34,30,20,17,14,13,15,15,29,24,26,31,46,41,39,26,35,38,34,56,46,40];
+
+const hourlyAll = [10914,10235,8225,6822,5644,4919,3266,3369,7071,8309,9171,9651,9446,8732,6743,6342,9375,10312,10431,11186,11237,9937,6528,6940];
+const hourlyViolent = [220,187,166,122,99,73,79,108,154,168,198,227,237,241,297,309,288,280,262,288,268,242,234,208];
+const hourlyGun = [83,46,34,30,20,17,14,13,15,15,29,24,25,30,46,41,39,25,35,38,34,56,46,40];
 const hourlyShooting = [1,2,1,1,4,4,2,2,0,2,3,5,1,6,1,5,1,3,2,3,3,9,3,5];
 const heatData = [
-  [28,26,14,9,11,10,9,14,23,23,38,39,35,34,39,50,38,56,39,42,41,39,31,24],
-  [33,21,20,8,11,8,8,12,21,28,22,26,27,28,48,40,28,30,36,45,28,31,22,26],
-  [22,15,19,13,9,3,8,13,21,21,24,32,17,29,47,33,43,33,30,29,42,33,31,27],
-  [43,38,33,32,21,9,13,20,25,19,34,31,32,30,43,50,45,48,43,55,38,35,35,29],
-  [21,16,16,16,13,13,14,14,17,32,28,25,40,42,44,55,58,37,40,45,31,35,31,36],
-  [35,42,36,28,10,14,14,16,20,21,24,35,38,38,34,40,45,40,23,39,42,32,41,34],
-  [36,26,28,16,24,16,12,18,26,22,26,38,44,40,42,41,31,36,45,31,45,35,42,29]
+  [29,27,14,9,11,10,9,14,24,23,39,40,36,34,39,50,38,56,39,42,41,39,31,25],
+  [33,21,20,8,11,8,8,12,21,29,22,26,30,28,48,40,28,30,37,45,28,31,22,26],
+  [21,15,19,13,9,3,8,13,21,21,24,32,17,29,47,33,43,34,31,29,42,32,31,27],
+  [43,38,33,32,21,9,13,20,25,19,34,31,32,30,43,50,45,47,45,55,38,37,35,29],
+  [21,17,16,16,13,13,14,14,17,33,28,25,40,42,44,55,58,37,40,46,31,35,31,36],
+  [37,43,36,28,10,14,14,17,20,21,24,35,38,38,34,40,45,40,25,40,43,32,41,34],
+  [36,26,28,16,24,16,13,18,26,22,27,38,44,40,42,41,31,36,45,31,45,36,43,31]
 ];
 const days = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
 const gunDistData = {
@@ -305,10 +382,30 @@ if(wc) {
 }
 
 
-// Section toggle
+// Homicide monthly chart
+const hmcEl = document.getElementById('hom-monthly-chart');
+if(hmcEl) {
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const cH=140,mxV=70,bW=40,gp=12,lP=40,rP=10;
+  const sW=lP+12*(bW+gp)+rP,sH=cH+35;
+  let s='<svg viewBox="0 0 '+sW+' '+sH+'" style="width:100%;height:100%;" xmlns="http://www.w3.org/2000/svg">';
+  [0,20,40,60].forEach(v=>{const y=cH-(v/mxV)*cH+5;s+='<text x="'+(lP-6)+'" y="'+y+'" text-anchor="end" fill="#8a8d9a" font-family="JetBrains Mono,monospace" font-size="9">'+v+'</text><line x1="'+lP+'" y1="'+(y-3)+'" x2="'+(sW-rP)+'" y2="'+(y-3)+'" stroke="#2a2d3a" stroke-width="0.5"/>';});
+  homMonthly.forEach((v,i)=>{
+    const x=lP+i*(bW+gp);
+    const h=(v/mxV)*cH;
+    const y=cH-h+2;
+    const col=v>=50?'#ff3b4a':v>=35?'#ff8a2b':v>=28?'#ffc62b':'#8a8d9a';
+    s+='<rect x="'+x+'" y="'+y+'" width="'+bW+'" height="'+h+'" rx="3" fill="'+col+'" opacity="0.75"/>';
+    s+='<text x="'+(x+bW/2)+'" y="'+(y-5)+'" text-anchor="middle" fill="'+col+'" font-family="JetBrains Mono,monospace" font-size="11" font-weight="700">'+v+'</text>';
+    s+='<text x="'+(x+bW/2)+'" y="'+(cH+16)+'" text-anchor="middle" fill="#8a8d9a" font-family="JetBrains Mono,monospace" font-size="9">'+months[i]+'</text>';
+  });
+  s+='</svg>';hmcEl.innerHTML=s;
+}
+
+
 document.querySelectorAll('.section-header').forEach(sh => {
   const content = sh.nextElementSibling;
-  if(content && (content.classList.contains('grid') || content.classList.contains('section-content'))) {
+  if(content && content.classList.contains('grid')) {
     content.style.maxHeight = '0';
     content.style.overflow = 'hidden';
     content.style.transition = 'max-height 0.5s ease';
@@ -328,10 +425,8 @@ document.querySelectorAll('.section-header').forEach(sh => {
     });
   }
 });
-// Back to top
 const btn = document.getElementById('back-to-top');
-window.addEventListener('scroll', () => { btn.classList.toggle('show', window.scrollY > 400); });
-btn.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+if(btn){window.addEventListener('scroll',()=>{btn.classList.toggle('show',window.scrollY>400);});btn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));}
 
 </script>
 </body>
