@@ -27,7 +27,7 @@
 </head>
 <body>
 
-<div class="header"><h1>&#x2B21; Full Spectrum Intelligence Analysis</h1><h2>Baltimore Crime Intelligence &mdash; Multi-Year Dataset (2022 &ndash; 2026)</h2><div class="subtitle">289,386 records: 90,801 Part 1 crimes (2022&ndash;2023) + 198,585 911 calls (Jan&ndash;Feb 2026) &middot; 9 Districts &middot; 428 homicides &middot; AI active</div></div>
+<div class="header"><h1>&#x2B21; Full Spectrum Intelligence Analysis</h1><h2>Baltimore Crime Intelligence &mdash; Multi-Year Dataset (2022 &ndash; 2026)</h2><div class="subtitle">289,386 records: Part 1 crimes (2022&ndash;2026) + 911 calls (Jan&ndash;Feb 2026) &middot; 428 homicides &middot; 9 Districts &middot; AI active</div></div>
 
 <div class="stats-bar">
 <div class="stat-item"><div class="stat-num" style="color:var(--red)">428</div><div class="stat-label">Homicides (2022&ndash;23)</div></div>
@@ -93,28 +93,28 @@
 </div>
 
 <!-- S3: PART 1 CRIME OVERVIEW -->
-<div class="section-header"><h3>&sect;3 &mdash; Part 1 Crime Overview (2022&ndash;2023)</h3></div>
+<div class="section-header"><h3>&sect;3 &mdash; Part 1 Crime Year-Over-Year (2022&ndash;2026)</h3></div>
 <div class="grid grid-2">
 <div class="card"><div class="card-title"><span class="dot"></span>Crime Volume by Type</div>
 <div id="nbr-bars"></div>
-<div class="insight" style="margin-top:14px"><div class="insight-label">Neighborhood Violence Ratio</div><strong>Penrose/Fayette</strong> (24.6%), <strong>Charles North</strong> (25.1%), and <strong>Sandtown-Winchester</strong> (24.2%) each have nearly <strong>1 in 4</strong> reported crimes classified as serious violent. These are structural violence zones, not random crime areas.</div>
+<div class="insight" style="margin-top:14px"><div class="insight-label">Neighborhood Violence Ratio</div><strong>Penrose/Fayette</strong> (24.6%), <strong>Charles North</strong> (25.1%), and <strong>Sandtown-Winchester</strong> (24.2%) &mdash; nearly <strong>1 in 4</strong> reported crimes is serious violent. 2023 auto theft <span style="color:var(--red)">surged 208%</span> vs 2022 (8,390 vs 2,723).</div>
 </div>
 <div class="card"><div class="card-title"><span class="dot"></span>Part 1 Crime Breakdown</div>
-<table class="data-table"><thead><tr><th>Category</th><th>2022&ndash;2023</th><th>Annual Avg</th></tr></thead><tbody>
-<tr><td>Common Assault</td><td style="color:var(--orange)">14,400</td><td>~7,200</td></tr>
-<tr><td>Vandalism</td><td>13,569</td><td>~6,785</td></tr>
-<tr><td>Auto Theft</td><td style="color:var(--red)">11,142</td><td>~5,571</td></tr>
-<tr><td>Agg. Assault</td><td style="color:var(--red)">8,958</td><td>~4,479</td></tr>
-<tr><td>Larceny</td><td>8,042</td><td>~4,021</td></tr>
-<tr><td>Larceny from Auto</td><td>6,238</td><td>~3,119</td></tr>
-<tr><td>Burglary</td><td>5,505</td><td>~2,753</td></tr>
-<tr><td>Fraud</td><td>5,286</td><td>~2,643</td></tr>
-<tr><td>Robbery (all)</td><td style="color:var(--orange)">6,213</td><td>~3,107</td></tr>
-<tr><td>&nbsp;&nbsp;&mdash; Carjacking</td><td style="color:var(--red)">949</td><td>~475</td></tr>
-<tr><td>Shoplifting</td><td>3,658</td><td>~1,829</td></tr>
-<tr><td>Homicide</td><td style="color:var(--red)">428</td><td>~214</td></tr>
-<tr><td>Rape</td><td>494</td><td>~247</td></tr>
+<table class="data-table"><thead><tr><th>Category</th><th>2022</th><th>2023</th><th>2024&ndash;26*</th></tr></thead><tbody>
+<tr><td style="font-weight:700">Total Part 1</td><td style="font-weight:700">39,558</td><td style="font-weight:700">50,768</td><td style="color:var(--text-dim)">472</td></tr>
+<tr><td style="color:var(--red)">Homicide</td><td style="color:var(--red)"><strong>236</strong></td><td style="color:var(--red)"><strong>192</strong></td><td style="color:var(--text-dim)">0</td></tr>
+<tr><td>Agg. Assault</td><td>4,409</td><td>4,524</td><td style="color:var(--text-dim)">25</td></tr>
+<tr><td>Common Assault</td><td>6,943</td><td>7,385</td><td style="color:var(--text-dim)">72</td></tr>
+<tr><td>Robbery</td><td>2,613</td><td>2,647</td><td style="color:var(--text-dim)">3</td></tr>
+<tr><td style="color:var(--orange)">&nbsp;&nbsp;Carjacking</td><td style="color:var(--orange)">547</td><td style="color:var(--orange)">401</td><td style="color:var(--text-dim)">1</td></tr>
+<tr><td style="color:var(--red)">Auto Theft</td><td>2,723</td><td style="color:var(--red)">8,390</td><td style="color:var(--text-dim)">29</td></tr>
+<tr><td>Burglary</td><td>2,806</td><td>2,685</td><td style="color:var(--text-dim)">14</td></tr>
+<tr><td>Larceny</td><td>3,721</td><td>4,259</td><td style="color:var(--text-dim)">62</td></tr>
+<tr><td>Rape</td><td>263</td><td>227</td><td style="color:var(--text-dim)">39</td></tr>
+<tr><td>Vandalism</td><td>5,550</td><td>7,986</td><td style="color:var(--text-dim)">33</td></tr>
+<tr><td>Fraud</td><td>2,137</td><td>3,026</td><td style="color:var(--text-dim)">123</td></tr>
 </tbody></table>
+<div style="font-size:10px;color:var(--text-dim);margin-top:8px;font-style:italic;">*2024&ndash;2026: Straggler/late-reported cases only &mdash; not complete years. 0 homicides.</div>
 </div>
 </div>
 
@@ -170,7 +170,7 @@
 <div class="card" style="border-color:var(--orange)"><div class="card-title" style="color:var(--orange);font-size:12px"><span class="dot"></span>Finding 2: The June Killing Season</div><p style="font-size:13px;line-height:1.7">June generates <strong>61 homicides</strong> &mdash; 2.6&times; September&rsquo;s 23. Summer (May&ndash;Aug) accounts for 39.5% of annual homicides. This <span style="color:var(--orange)">seasonal amplification</span> is stronger than most US cities.</p></div>
 <div class="card" style="border-color:var(--purple)"><div class="card-title" style="color:var(--purple);font-size:12px"><span class="dot"></span>Finding 3: Volume-Lethality Inversion</div><p style="font-size:13px;line-height:1.7"><strong>Western</strong>: fewest 911 calls but highest gun rate (0.72%). <strong>Southeastern</strong>: most calls but lowest violence (1.4%). Correlation: <span style="color:var(--purple)">r &asymp; &minus;0.65</span>. Low-call districts = concentrated lethal violence.</p></div>
 <div class="card" style="border-color:var(--cyan)"><div class="card-title" style="color:var(--cyan);font-size:12px"><span class="dot"></span>Finding 4: Thursday Anomaly</div><p style="font-size:13px;line-height:1.7">Thursday: <strong>804 violent calls</strong> &mdash; 35% more than Tuesday. Most violent single cell: Thursday midnight (43 calls). Baltimore&rsquo;s violence <span style="color:var(--cyan)">defies the weekend pattern</span>.</p></div>
-<div class="card full-width" style="border-color:var(--red)"><div class="card-title" style="color:var(--red);font-size:12px"><span class="dot"></span>Finding 5: Structural Violence Zones</div><p style="font-size:13px;line-height:1.7">Neighborhoods with &gt;20% serious violent crime ratios: <strong>Penrose/Fayette</strong> (24.6%), <strong>Sandtown-Winchester</strong> (24.2%), <strong>Upton</strong> (23.7%), <strong>Mondawmin</strong> (22.5%). These aren&rsquo;t crime hotspots &mdash; they&rsquo;re <span style="color:var(--red)">structurally violent territories</span> where 1 in 4 reported crimes involves serious violence.</p></div>
+<div class="card full-width" style="border-color:var(--red)"><div class="card-title" style="color:var(--red);font-size:12px"><span class="dot"></span>Finding 5: 2023 Auto Theft Explosion + Structural Violence</div><p style="font-size:13px;line-height:1.7">Auto theft <strong>tripled</strong> from 2,723 (2022) to 8,390 (2023) &mdash; a <span style="color:var(--red)">+208% surge</span>, the largest single-category increase. Meanwhile carjackings <em>dropped</em> 27% (547&rarr;401). Structural violence zones persist: Penrose/Fayette (24.6%), Sandtown-Winchester (24.2%), Upton (23.7%) &mdash; 1 in 4 crimes is serious violent.</p></div>
 </div>
 
 <!-- S9: SAFETY -->
